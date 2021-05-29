@@ -1,0 +1,31 @@
+<div class="container">
+
+
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">Phone_No:</label>
+      <input type="text" id="ph_no" name="ph_no" formControlName="ph_no" class="form-control">
+    </p>
+
+    <table class="table table-bordered" formArrayName="quantities">
+
+      <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+        <td>
+          Another phone no. :
+          <input type="text" formControlName="pno" class="form-control">
+        </td>
+
+        <td>
+          <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+
+    </table>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="button" (click)="addQuantity()" class="btn btn-primary">Add another phone no</button>
+  </form>
+
+  <br/>
+</div>
